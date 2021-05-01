@@ -1,0 +1,12 @@
+Container(
+              width: double.infinity,
+              height: double.infinity,
+              child: AnimatedOpacity(
+                opacity: _hideStuff ? 0.0 : 1.0,
+                duration: _controlsConfiguration.controlsHideTime,
+                onEnd: _onPlayerHide,
+                child: Container(
+                  color: Colors.black.withAlpha(70),
+                ),
+              ),
+            ),
