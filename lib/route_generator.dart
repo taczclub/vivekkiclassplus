@@ -6,6 +6,10 @@ import 'package:vivekkiclassplus/screens/SociologyNoteSubCategoryScreen.dart';
 import 'package:vivekkiclassplus/screens/SociologyNoteViewScreen.dart';
 import 'package:vivekkiclassplus/screens/SociologyNotesScreen.dart';
 import 'package:vivekkiclassplus/screens/SociologyScreen.dart';
+import 'package:vivekkiclassplus/screens/SociologyTestCategoryScreen.dart';
+import 'package:vivekkiclassplus/screens/SociologyTestScreen.dart';
+import 'package:vivekkiclassplus/screens/SociologyTestSubcategoryScreen.dart';
+import 'package:vivekkiclassplus/screens/SociologyTestsScreen.dart';
 import 'package:vivekkiclassplus/screens/SociologyVideoCategoryScreen.dart';
 import 'package:vivekkiclassplus/screens/SociologyVideoPlayerScreen.dart';
 import 'package:vivekkiclassplus/screens/SociologyVideoSubCategoryScreen.dart';
@@ -49,13 +53,19 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => NoteCategoryScreen());
       case 'sociology_notes_category':
         return MaterialPageRoute(builder: (_) => SociologyNoteCategoryScreen());
+      case 'sociology_tests_category':
+        return MaterialPageRoute(builder: (_) => SociologyTestCategoryScreen());
       case 'notes_sub_category':
         final String id = settings.arguments;
         return MaterialPageRoute(builder: (_) => NoteSubCategoryScreen(id: id));
       case 'sociology_notes_sub_category':
         final String id = settings.arguments;
         return MaterialPageRoute(
-            builder: (_) => SociologyNoteSubCategoryScreen(id: id));
+            builder: (_) => SociologyTestSubCategoryScreen(id: id));
+      case 'sociology_tests_sub_category':
+        final String id = settings.arguments;
+        return MaterialPageRoute(
+            builder: (_) => SociologyTestSubCategoryScreen(id: id));
       case 'sociology_videos_sub_category':
         final String id = settings.arguments;
         return MaterialPageRoute(
@@ -67,9 +77,17 @@ class RouteGenerator {
         final String id = settings.arguments;
         return MaterialPageRoute(
             builder: (_) => SociologyVideoPlayerScreen(id: id));
+      case 'sociology_video_player':
+        final String id = settings.arguments;
+        return MaterialPageRoute(
+            builder: (_) => SociologyVideoPlayerScreen(id: id));
       case 'notes_screen':
         final String id = settings.arguments;
         return MaterialPageRoute(builder: (_) => NotesScreen(id: id));
+      case 'sociology_tests':
+        final String id = settings.arguments;
+        return MaterialPageRoute(
+            builder: (_) => SociologyTestsScreen(id: id)); //
       case 'sociology_notes_screen':
         final String id = settings.arguments;
         return MaterialPageRoute(builder: (_) => SociologyNotesScreen(id: id));
@@ -87,6 +105,13 @@ class RouteGenerator {
           builder: (_) => SociologyNoteViewScreen(
             title: body['title'],
             pdf: body['pdf'],
+          ),
+        );
+      case 'sociology_test':
+        Map<String, dynamic> body = settings.arguments;
+        return MaterialPageRoute(
+          builder: (_) => SociologyTestScreen(
+            id: body['id'],
           ),
         );
       case 'current_affair_view':

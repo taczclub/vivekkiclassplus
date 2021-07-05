@@ -56,6 +56,27 @@ class SociologyCategoryScreen extends StatelessWidget {
               ),
             ),
           ),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pushNamed('sociology_tests_category');
+            },
+            child: Card(
+              child: ListTile(
+                leading: Image.asset(
+                  'assets/icons/pdf.png',
+                  height: 40,
+                  width: 40,
+                ),
+                title: Text(
+                  'Test Series',
+                  style: GoogleFonts.ptSerif(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
