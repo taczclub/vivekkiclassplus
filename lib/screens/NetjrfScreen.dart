@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:vivekkiclassplus/services/sociologyvideocategory.dart';
+// import 'package:vivekkiclassplus/services/netjrfvideocategory.dart';
 
-class SociologyCategoryScreen extends StatelessWidget {
+class NetjrfCategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Sociology Categories',
+          'Netjrf Categories',
           style: GoogleFonts.ptSerif(fontWeight: FontWeight.w600),
         ),
       ),
@@ -16,7 +16,7 @@ class SociologyCategoryScreen extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed('sociology_videos_category');
+              Navigator.of(context).pushNamed('netjrf_videos_category');
             },
             child: Card(
               child: ListTile(
@@ -37,7 +37,7 @@ class SociologyCategoryScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed('sociology_notes_category');
+              Navigator.of(context).pushNamed('netjrf_notes_category');
             },
             child: Card(
               child: ListTile(
@@ -58,7 +58,7 @@ class SociologyCategoryScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed('sociology_tests_category');
+              Navigator.of(context).pushNamed('netjrf_tests_category');
             },
             child: Card(
               child: ListTile(

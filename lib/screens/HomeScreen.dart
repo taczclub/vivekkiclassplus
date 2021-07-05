@@ -172,16 +172,16 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.all(5),
           children: [
             InkWell(
-              onTap: () async => await planError('videos', context),
+              onTap: () async => await planError('netjrf', context),
               child: gridItem(
                 true,
                 Image.asset(
-                  'assets/icons/play-button.png',
-                  height: 50,
-                  width: 50,
+                  'assets/icons/sociology.png',
+                  height: 48,
+                  width: 48,
                 ),
                 Text(
-                  'Video Classes (NET/JRF)',
+                  'NET/JRF Classes',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.ptSerif(
                     fontWeight: FontWeight.w600,
@@ -189,24 +189,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () async => await planError('notes', context),
-              child: gridItem(
-                true,
-                Image.asset(
-                  'assets/icons/pdf.png',
-                  height: 46,
-                  width: 46,
-                ),
-                Text(
-                  'Notes & PDF (NET/JRF)',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.ptSerif(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
+            // InkWell(
+            //   onTap: () async => await planError('videos', context),
+            //   child: gridItem(
+            //     true,
+            //     Image.asset(
+            //       'assets/icons/play-button.png',
+            //       height: 50,
+            //       width: 50,
+            //     ),
+            //     Text(
+            //       'Video Classes (NET/JRF)',
+            //       textAlign: TextAlign.center,
+            //       style: GoogleFonts.ptSerif(
+            //         fontWeight: FontWeight.w600,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // InkWell(
+            //   onTap: () async => await planError('notes', context),
+            //   child: gridItem(
+            //     true,
+            //     Image.asset(
+            //       'assets/icons/pdf.png',
+            //       height: 46,
+            //       width: 46,
+            //     ),
+            //     Text(
+            //       'Notes & PDF (NET/JRF)',
+            //       textAlign: TextAlign.center,
+            //       style: GoogleFonts.ptSerif(
+            //         fontWeight: FontWeight.w600,
+            //       ),
+            //     ),
+            //   ),
+            // ),
             // InkWell(
             //   onTap: () => Navigator.of(context).pushNamed('profile_screen'),
             //   child: gridItem(

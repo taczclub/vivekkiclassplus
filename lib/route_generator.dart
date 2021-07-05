@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:vivekkiclassplus/screens/CurrentAffairViewScreen.dart';
 import 'package:vivekkiclassplus/screens/CurrentAffairsScreen.dart';
+import 'package:vivekkiclassplus/screens/NetjrfScreen.dart';
+import 'package:vivekkiclassplus/screens/NetjrfTestCategoryScreen.dart';
+import 'package:vivekkiclassplus/screens/NetjrfTestScreen.dart';
+import 'package:vivekkiclassplus/screens/NetjrfTestSubcategoryScreen.dart';
+import 'package:vivekkiclassplus/screens/NetjrfTestsScreen.dart';
 import 'package:vivekkiclassplus/screens/SociologyNoteCategoryScreen.dart';
 import 'package:vivekkiclassplus/screens/SociologyNoteSubCategoryScreen.dart';
 import 'package:vivekkiclassplus/screens/SociologyNoteViewScreen.dart';
@@ -38,10 +43,12 @@ class RouteGenerator {
             builder: (_) => MainScreen(
                   index: i,
                 ));
-      case 'videos_category':
+      case 'netjrf_videos_category':
         return MaterialPageRoute(builder: (_) => VideoCategoryScreen());
       case 'sociology_category':
         return MaterialPageRoute(builder: (_) => SociologyCategoryScreen());
+      case 'netjrf_category':
+        return MaterialPageRoute(builder: (_) => NetjrfCategoryScreen());
       case 'sociology_videos_category':
         return MaterialPageRoute(
             builder: (_) => SociologyVideoCategoryScreen());
@@ -49,12 +56,14 @@ class RouteGenerator {
         final String id = settings.arguments;
         return MaterialPageRoute(
             builder: (_) => VideoSubCategoryScreen(id: id));
-      case 'notes_category':
+      case 'netjrf_notes_category':
         return MaterialPageRoute(builder: (_) => NoteCategoryScreen());
       case 'sociology_notes_category':
         return MaterialPageRoute(builder: (_) => SociologyNoteCategoryScreen());
       case 'sociology_tests_category':
         return MaterialPageRoute(builder: (_) => SociologyTestCategoryScreen());
+      case 'netjrf_tests_category':
+        return MaterialPageRoute(builder: (_) => NetjrfTestCategoryScreen());
       case 'notes_sub_category':
         final String id = settings.arguments;
         return MaterialPageRoute(builder: (_) => NoteSubCategoryScreen(id: id));
@@ -66,6 +75,10 @@ class RouteGenerator {
         final String id = settings.arguments;
         return MaterialPageRoute(
             builder: (_) => SociologyTestSubCategoryScreen(id: id));
+      case 'netjrf_tests_sub_category':
+        final String id = settings.arguments;
+        return MaterialPageRoute(
+            builder: (_) => NetjrfTestSubCategoryScreen(id: id));
       case 'sociology_videos_sub_category':
         final String id = settings.arguments;
         return MaterialPageRoute(
@@ -86,8 +99,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => NotesScreen(id: id));
       case 'sociology_tests':
         final String id = settings.arguments;
-        return MaterialPageRoute(
-            builder: (_) => SociologyTestsScreen(id: id)); //
+        return MaterialPageRoute(builder: (_) => SociologyTestsScreen(id: id));
+      case 'netjrf_tests':
+        final String id = settings.arguments;
+        return MaterialPageRoute(builder: (_) => NetjrfTestsScreen(id: id));
       case 'sociology_notes_screen':
         final String id = settings.arguments;
         return MaterialPageRoute(builder: (_) => SociologyNotesScreen(id: id));
@@ -111,6 +126,13 @@ class RouteGenerator {
         Map<String, dynamic> body = settings.arguments;
         return MaterialPageRoute(
           builder: (_) => SociologyTestScreen(
+            id: body['id'],
+          ),
+        );
+      case 'netjrf_test':
+        Map<String, dynamic> body = settings.arguments;
+        return MaterialPageRoute(
+          builder: (_) => NetjrfTestScreen(
             id: body['id'],
           ),
         );

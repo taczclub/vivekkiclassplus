@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:vivekkiclassplus/services/sociologyvideocategory.dart';
 
-class SociologyCategoryScreen extends StatelessWidget {
+class PpCategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Sociology Categories',
+          'Pre PHD Categories',
           style: GoogleFonts.ptSerif(fontWeight: FontWeight.w600),
         ),
       ),

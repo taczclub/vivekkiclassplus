@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../services/netjrfvideocategory.dart';
+import 'package:vivekkiclassplus/services/netjrftestcategory.dart';
 
-class VideoCategoryScreen extends StatelessWidget {
+class NetjrfTestCategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Video Categories',
+          'Netjrf Test Categories',
           style: GoogleFonts.ptSerif(fontWeight: FontWeight.w600),
         ),
       ),
       body: FutureBuilder(
-        future: getVideoCategory(),
+        future: getNetjrfTestCategory(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
@@ -21,12 +21,13 @@ class VideoCategoryScreen extends StatelessWidget {
             default:
               if (snapshot.data['error']) {
                 return Center(
-                    child: Text(
-                  snapshot.data['msg'],
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                  child: Text(
+                    snapshot.data['msg'],
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ));
+                );
               } else {
                 return ListView.builder(
                   itemCount: snapshot.data['msg'].length,
@@ -36,8 +37,8 @@ class VideoCategoryScreen extends StatelessWidget {
                             onTap: () => {
                               Navigator.of(context).pushNamed(
                                 snapshot.data['msg'][index]['subcategory']
-                                    ? 'videos_sub_category'
-                                    : 'video_player',
+                                    ? 'netjrf_tests_sub_category'
+                                    : 'netjrf_test_player',
                                 arguments: snapshot.data['msg'][index]['_id'],
                               )
                             },
@@ -58,7 +59,7 @@ class VideoCategoryScreen extends StatelessWidget {
                               ),
                             ),
                           )
-                        : Center(child: Text('No Video Category'));
+                        : Center(child: Text('No Test Category'));
                   },
                 );
               }

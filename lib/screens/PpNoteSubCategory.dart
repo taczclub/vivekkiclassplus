@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../services/netjrfvideocategory.dart';
+import '../services/ppnotesubcategory.dart';
 
-class VideoCategoryScreen extends StatelessWidget {
+class PpNoteSubCategoryScreen extends StatelessWidget {
+  final String id;
+  PpNoteSubCategoryScreen({@required this.id});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Video Categories',
+          'Pre PHD Notes Sub Categories',
           style: GoogleFonts.ptSerif(fontWeight: FontWeight.w600),
         ),
       ),
       body: FutureBuilder(
-        future: getVideoCategory(),
+        future: getPpNoteSubCategory(this.id),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
@@ -21,30 +23,27 @@ class VideoCategoryScreen extends StatelessWidget {
             default:
               if (snapshot.data['error']) {
                 return Center(
-                    child: Text(
-                  snapshot.data['msg'],
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                  child: Text(
+                    snapshot.data['msg'],
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ));
+                );
               } else {
                 return ListView.builder(
                   itemCount: snapshot.data['msg'].length,
                   itemBuilder: (context, index) {
                     return snapshot.data['msg'].length != 0
                         ? InkWell(
-                            onTap: () => {
-                              Navigator.of(context).pushNamed(
-                                snapshot.data['msg'][index]['subcategory']
-                                    ? 'videos_sub_category'
-                                    : 'video_player',
-                                arguments: snapshot.data['msg'][index]['_id'],
-                              )
-                            },
+                            onTap: () => Navigator.of(context).pushNamed(
+                              'pp_notes_screen',
+                              arguments: snapshot.data['msg'][index]['_id'],
+                            ),
                             child: Card(
                               child: ListTile(
                                 leading: Image.asset(
-                                  'assets/icons/play-button.png',
+                                  'assets/icons/pdf.png',
                                   height: 40,
                                   width: 40,
                                 ),
@@ -58,7 +57,7 @@ class VideoCategoryScreen extends StatelessWidget {
                               ),
                             ),
                           )
-                        : Center(child: Text('No Video Category'));
+                        : Center(child: Text('No Note Sub Category'));
                   },
                 );
               }
