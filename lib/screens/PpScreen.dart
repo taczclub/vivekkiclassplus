@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:vivekkiclassplus/services/sociologyvideocategory.dart';
+// import 'package:vivekkiclassplus/services/ppvideocategory.dart';
 
 class PpCategoryScreen extends StatelessWidget {
   @override
@@ -16,7 +16,7 @@ class PpCategoryScreen extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed('sociology_videos_category');
+              Navigator.of(context).pushNamed('pp_videos_category');
             },
             child: Card(
               child: ListTile(
@@ -37,7 +37,7 @@ class PpCategoryScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed('sociology_notes_category');
+              Navigator.of(context).pushNamed('pp_notes_category');
             },
             child: Card(
               child: ListTile(
@@ -58,7 +58,7 @@ class PpCategoryScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed('sociology_tests_category');
+              Navigator.of(context).pushNamed('pp_tests_category');
             },
             child: Card(
               child: ListTile(

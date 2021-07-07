@@ -280,6 +280,24 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             InkWell(
+              onTap: () async => await planError('pp', context),
+              child: gridItem(
+                true,
+                Image.asset(
+                  'assets/icons/sociology.png',
+                  height: 48,
+                  width: 48,
+                ),
+                Text(
+                  'Pre PHD Classes',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.ptSerif(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+            InkWell(
               onTap: () {
                 Navigator.pushNamed(context, 'current_affair_screen');
               },
