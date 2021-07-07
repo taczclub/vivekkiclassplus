@@ -277,7 +277,7 @@ class _NetjrfTestPlayScreenState extends State<NetjrfTestPlayScreen> {
         }
         time = '$minutes:$seconds';
         if (minutes == 0 && seconds == 0) {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             PageTransition(
               duration: Duration(milliseconds: 00),
@@ -292,7 +292,7 @@ class _NetjrfTestPlayScreenState extends State<NetjrfTestPlayScreen> {
 
   nextQuestion() {
     if (index == widget.questions.length - 1) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         PageTransition(
           duration: Duration(milliseconds: 00),

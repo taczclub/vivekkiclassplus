@@ -278,7 +278,7 @@ class _SociologyTestPlayScreenState extends State<SociologyTestPlayScreen> {
         }
         time = '$minutes:$seconds';
         if (minutes == 0 && seconds == 0) {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             PageTransition(
               duration: Duration(milliseconds: 00),
@@ -293,7 +293,7 @@ class _SociologyTestPlayScreenState extends State<SociologyTestPlayScreen> {
 
   nextQuestion() {
     if (index == widget.questions.length - 1) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         PageTransition(
           duration: Duration(milliseconds: 00),

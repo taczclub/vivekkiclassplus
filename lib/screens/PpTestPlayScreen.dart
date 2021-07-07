@@ -34,7 +34,7 @@ class _PpTestPlayScreenState extends State<PpTestPlayScreen> {
   var index = 0;
   var minutes = 0;
   var seconds = 0;
-  var time = '';
+  var time = '0:0';
   var right = 0;
   var wrong = 0;
 
@@ -54,7 +54,6 @@ class _PpTestPlayScreenState extends State<PpTestPlayScreen> {
     var question = widget.questions[index];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff007aa5),
         centerTitle: true,
         title: Text(time),
       ),
@@ -277,12 +276,16 @@ class _PpTestPlayScreenState extends State<PpTestPlayScreen> {
         }
         time = '$minutes:$seconds';
         if (minutes == 0 && seconds == 0) {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             PageTransition(
               duration: Duration(milliseconds: 00),
               type: PageTransitionType.rightToLeft,
-              child: PpTestResultScreen(),
+              child: PpTestResultScreen(
+                total: widget.questions.length,
+                right: right,
+                wrong: wrong,
+              ),
             ),
           );
         }
@@ -292,12 +295,16 @@ class _PpTestPlayScreenState extends State<PpTestPlayScreen> {
 
   nextQuestion() {
     if (index == widget.questions.length - 1) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         PageTransition(
           duration: Duration(milliseconds: 00),
           type: PageTransitionType.rightToLeft,
-          child: PpTestResultScreen(right: right, wrong: wrong),
+          child: PpTestResultScreen(
+            total: widget.questions.length,
+            right: right,
+            wrong: wrong,
+          ),
         ),
       );
     } else {
