@@ -37,16 +37,23 @@ class _PpTestPlayScreenState extends State<PpTestPlayScreen> {
   var time = '0:0';
   var right = 0;
   var wrong = 0;
+  Timer _timer;
 
   @override
   void initState() {
     super.initState();
     var d = widget.duration.split(':');
-    // minutes = int.parse(d[0]);
-    // seconds = int.parse(d[1]);
-    minutes = 0;
-    seconds = 5;
+    minutes = int.parse(d[0]);
+    seconds = int.parse(d[1]);
+    // minutes = 5;
+    // seconds = 5;
     startTimer(seconds, minutes);
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override
@@ -192,20 +199,63 @@ class _PpTestPlayScreenState extends State<PpTestPlayScreen> {
               ],
             ),
           ),
-          Container(
-              width: MediaQuery.of(context).size.width / 1.11,
-              child: TextButton(
-                onPressed: () {
-                  if (_value != '') {
-                    nextQuestion();
-                  }
-                },
-                child: Text('Next'),
-                style: TextButton.styleFrom(
-                    primary: Colors.white,
-                    backgroundColor:
-                        _value != '' ? Color(0xff007aa5) : Colors.grey[400]),
-              )),
+          Row(
+            children: [
+              index != 0
+                  ? Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: TextButton(
+                          onPressed: () {
+                            previousQuestion();
+                          },
+                          child: Text('Previous'),
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Color(0xff007aa5),
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: TextButton(
+                    onPressed: () {
+                      submitTest();
+                    },
+                    child: Text('Submit'),
+                    style: TextButton.styleFrom(
+                      primary: Colors.white,
+                      backgroundColor: Color(0xff007aa5),
+                    ),
+                  ),
+                ),
+              ),
+              index != widget.questions.length - 1
+                  ? Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: TextButton(
+                          onPressed: () {
+                            if (_value != '') {
+                              nextQuestion();
+                            }
+                          },
+                          child: Text('Next'),
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: _value != ''
+                                ? Color(0xff007aa5)
+                                : Colors.grey[400],
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
+            ],
+          ),
         ],
       ),
     );
@@ -264,7 +314,7 @@ class _PpTestPlayScreenState extends State<PpTestPlayScreen> {
   }
 
   startTimer(seconds, minutes) {
-    Timer.periodic(Duration(seconds: 1), (Timer timer) {
+    _timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
       setState(() {
         if (seconds > 0) {
           seconds = seconds - 1;
@@ -276,45 +326,44 @@ class _PpTestPlayScreenState extends State<PpTestPlayScreen> {
         }
         time = '$minutes:$seconds';
         if (minutes == 0 && seconds == 0) {
-          Navigator.pushReplacement(
-            context,
-            PageTransition(
-              duration: Duration(milliseconds: 00),
-              type: PageTransitionType.rightToLeft,
-              child: PpTestResultScreen(
-                total: widget.questions.length,
-                right: right,
-                wrong: wrong,
-              ),
-            ),
-          );
+          submitTest();
         }
       });
     });
   }
 
   nextQuestion() {
-    if (index == widget.questions.length - 1) {
-      Navigator.pushReplacement(
-        context,
-        PageTransition(
-          duration: Duration(milliseconds: 00),
-          type: PageTransitionType.rightToLeft,
-          child: PpTestResultScreen(
-            total: widget.questions.length,
-            right: right,
-            wrong: wrong,
-          ),
+    setState(() {
+      _value = "";
+      green = "";
+      red = "";
+      isselected = false;
+      index += 1;
+    });
+  }
+
+  previousQuestion() {
+    setState(() {
+      _value = "";
+      green = "";
+      red = "";
+      isselected = false;
+      index -= 1;
+    });
+  }
+
+  submitTest() {
+    Navigator.pushReplacement(
+      context,
+      PageTransition(
+        duration: Duration(milliseconds: 00),
+        type: PageTransitionType.rightToLeft,
+        child: PpTestResultScreen(
+          total: widget.questions.length,
+          right: right,
+          wrong: wrong,
         ),
-      );
-    } else {
-      setState(() {
-        _value = "";
-        green = "";
-        red = "";
-        isselected = false;
-        index += 1;
-      });
-    }
+      ),
+    );
   }
 }

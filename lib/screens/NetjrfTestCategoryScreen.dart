@@ -38,7 +38,7 @@ class NetjrfTestCategoryScreen extends StatelessWidget {
                               Navigator.of(context).pushNamed(
                                 snapshot.data['msg'][index]['subcategory']
                                     ? 'netjrf_tests_sub_category'
-                                    : 'netjrf_test_player',
+                                    : 'netjrf_tests',
                                 arguments: snapshot.data['msg'][index]['_id'],
                               )
                             },

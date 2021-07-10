@@ -55,7 +55,9 @@ class NetjrfTestSubCategoryScreen extends StatelessWidget {
                               ),
                             ),
                           )
-                        : Center(child: Text('No Test SUb Category'));
+                        : Center(
+                            child: Text('No Test Sub Category'),
+                          );
                   },
                 );
               }

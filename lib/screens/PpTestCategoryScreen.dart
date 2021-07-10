@@ -38,7 +38,7 @@ class PpTestCategoryScreen extends StatelessWidget {
                               Navigator.of(context).pushNamed(
                                 snapshot.data['msg'][index]['subcategory']
                                     ? 'pp_tests_sub_category'
-                                    : 'pp_test_player',
+                                    : 'pp_tests',
                                 arguments: snapshot.data['msg'][index]['_id'],
                               )
                             },

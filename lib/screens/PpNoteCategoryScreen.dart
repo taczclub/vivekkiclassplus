@@ -8,7 +8,7 @@ class PpNoteCategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Pre PHD Notes Categories',
+          'Pp Notes Categories',
           style: GoogleFonts.ptSerif(fontWeight: FontWeight.w600),
         ),
       ),

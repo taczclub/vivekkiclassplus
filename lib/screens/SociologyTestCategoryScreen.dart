@@ -38,7 +38,7 @@ class SociologyTestCategoryScreen extends StatelessWidget {
                               Navigator.of(context).pushNamed(
                                 snapshot.data['msg'][index]['subcategory']
                                     ? 'sociology_tests_sub_category'
-                                    : 'sociology_test_player',
+                                    : 'sociology_tests',
                                 arguments: snapshot.data['msg'][index]['_id'],
                               )
                             },
